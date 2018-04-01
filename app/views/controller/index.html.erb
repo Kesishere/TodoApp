@@ -1,0 +1,32 @@
+<h1>Задачи</h1>
+<%= link_to image_tag("addTodoIcon.png"), "#", id: "add_button" %>
+<table>
+  <% @project.each do |project| %>
+    <tr>
+	<h2><%= project.title %></h2>
+
+    <ul>
+    <% project.todos.each do |todo| %>
+        <li><%= todo.text %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</table>
+
+<div id="new_todo_form">
+    <h2>Новая задача</h2>
+  	
+	<%= form_for :todo, :url => controller_create_path, html: { id: "form" } do |f| %>
+        <p>
+            <%= f.text_field :text, placeholder:"Название задачи..."%>
+        </p>
+
+        <p>
+            <%= f.collection_select(:project_id, Project.all, :id, :title) %>
+        </p>
+	<% end %>
+            <%= link_to "Отмена","#", id: "hide" %>
+    		<%= link_to "OK", controller_create_path, id: "your_link" %>
+</div>
+
+
