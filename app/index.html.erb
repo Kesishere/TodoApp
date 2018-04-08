@@ -1,0 +1,54 @@
+<div class="header сol-md-12">
+    <h1>Задачи</h1>
+    <%= link_to image_tag("addTodoIcon.png"), "#", id: "add_button" %>
+</div>
+<div class="content">
+    <div class="row">
+            <% @projects.each do |project| %>
+                <div class="col-md-6 col-lg-4">
+                    <div class="todo">
+                        <table>
+                            <tr class="border_bottom">
+                                <td>
+	                          <h2><%= project.title %></h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>  
+                                <ul>
+                                    <% project.todos.all.each do |todo| %>
+                                        <li>
+                                            <%= form_for :project, html: {id: "update" } do |f| %>
+                                               <p><%=f.check_box('tag', {class: 'icheckbox_square-blue', checked: todo.isCompleted}) %> 
+                                                <%= todo.text %></p>
+                                            <% end %>
+                                            </li>
+                                    <% end %>
+                                </ul>
+                            </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>              
+            <% end %>
+    </div>
+</div>
+
+<div id="new_todo_form">
+    <h2>Новая задача</h2>
+  	
+	<%= form_for :todo, html: { id: "form" } do |f| %>
+        <p>
+            <%= f.text_field :text, placeholder:"Название задачи...", class: 'text_field' %>
+        </p>
+
+        <p>
+            <%= f.collection_select(:project_id, Project.all, :id, :title, {:prompt => 'Категория'},{:class=>'select'}) %>
+        </p>
+	<% end %>
+            <%= link_to "Отмена","#", id: "hide" %>
+    		<%= link_to "OK", projects_create_path, id: "submit" %>
+</div>
+<div id="overlay"></div>
+
+

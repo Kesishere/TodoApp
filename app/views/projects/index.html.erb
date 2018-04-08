@@ -1,0 +1,58 @@
+<div class="header сol-md-12">
+    <h1>Задачи</h1>
+    <%= link_to image_tag("addTodoIcon.png"), "#", id: "add_button" %>
+</div>
+<div class="content">
+    <div class="row">
+            <% @projects.each do |project| %>
+                <div class="col-md-6 col-lg-4">
+                    <div class="todo">
+                        <table>
+                            <tr class="border_bottom">
+                                <td>
+                              <h3><%= project.title %></h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>  
+                                <ul>
+                                    <% project.todos.each do |todo| %>
+                                        <li>
+                                            <%= form_for :todos, :url => todos_update_path, method: :patch do |f| %>
+                                               
+                                                <p class="update">
+                                                <%=f.check_box(:isCompleted,{class: 'сhbox icheckbox_square-blue', checked: todo.isCompleted}) %> 
+                                                    <span class="<%= todo.isCompleted == true ? 'strikethrough' : 'clear'%>"><%= todo.text %></span>
+                                                    <%= f.hidden_field :id,:value => todo.id %>
+                                                </p>
+                                            <% end %>
+                                            </li>
+                                    <% end %>
+                                </ul>
+                            </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>              
+            <% end %>
+    </div>
+</div>
+
+<div id="new_todo_form">
+    <h2>Новая задача</h2>
+    
+    <%= form_for :todo, :url => todos_create_path, html: { id: "form" } do |f| %>
+        <p>
+            <%= f.text_field :text, placeholder:"Название задачи...", class: 'text_field' %>
+        </p>
+
+        <p>
+            <%= f.collection_select(:project_id, Project.all, :id, :title, {:prompt => 'Категория'},{:class=>'select'}) %>
+        </p>
+    <% end %>
+            <%= link_to "Отмена","#", id: "hide" %>
+            <%= link_to "OK", todos_create_path, id: "submit" %>
+</div>
+<div id="overlay"></div>
+
+

@@ -1,0 +1,214 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require select2
+ *= require select2-bootstrap
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "select2";
+@import "icheck/square/_all";
+
+@font-face {
+  font-family: 'OpenSans-light';
+  src:url('OpenSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src:url('OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans-Semibold';
+  src:url('OpenSans-Semibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.header h1 {
+	display: inline-block;
+	font-family: 'OpenSans-Semibold';
+	margin: 0 auto;
+    line-height:51px;
+    vertical-align:middle;
+}
+
+.header {
+	width:100%;
+	position: fixed;
+	background-color: #00BFFF;
+	color: white;
+	text-align:center;
+
+
+}
+.content{
+	padding-top: 100px;
+	padding-left: 100px;
+	padding-right: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+table{
+	width: 100%;
+}
+
+.header #add_button {
+
+	display: inline-block;
+	float: right;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.todo{
+	-webkit-box-shadow: 2px 4px 4px 1px rgba(0,0,0,0.6);
+	   -moz-box-shadow: 2px 4px 4px 1px rgba(0,0,0,0.6);
+	        box-shadow: 2px 4px 4px 1px rgba(0,0,0,0.6);
+	width: 300px;
+	height: auto;
+	padding-top: 5px;
+	font-family: 'OpenSans-Semibold';
+
+}
+tr.border_bottom td {
+	height: 0px;
+  border-bottom:1pt solid black;
+}
+
+
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+
+   height: 40px !important;
+
+   span {
+
+       line-height: 40px !important;
+
+       text-align: left;
+
+   }
+
+}
+
+.select2-selection {
+
+   border-radius: 0 !important;
+
+}
+.select{
+	width: 275px;
+	display: block;
+}
+#new_todo_form {
+	width: 300px; 
+	height: 250px;
+	border-radius: 3px;
+	border: 1px #000 solid;
+	background: #fff;
+	position: fixed; 
+	top: 45%; 
+	left: 50%; 
+	margin-top: -150px;
+	margin-left: -150px; 
+	display: none; 
+	opacity: 0; 
+	z-index: 5;
+	padding: 10px;
+	font-family: 'OpenSans-Regular';
+}
+
+#overlay {
+	z-index:3; 
+	position:fixed; 
+	background-color:#000; 
+	opacity:0.8; 
+	-moz-opacity:0.8; 
+	filter:alpha(opacity=80);
+	width:100%; 
+	height:100%; 
+	top:0; 
+	left:0;
+	cursor:pointer;
+	display:none; 
+}
+
+#hide {
+	display:inline-block;
+	border: 1px solid grey;
+	padding: 4px;
+	width: 135px;
+	height: 30px;
+	text-align: center;
+	font-family: 'OpenSans-Semibold';
+	background-color: grey;
+	color:white;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+#submit{
+	display:inline-block;
+	border: 1px solid #00BFFF;
+	padding: 4px;
+	width: 135px;
+	height: 30px;
+	text-align: center;
+	font-family: 'OpenSans-Semibold';
+	background-color: #00BFFF;
+	color:white;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.text_field{
+	width: 275px;
+	height: 40px;
+}
+
+#new_todo_form h2 {
+	text-align: center;
+}
+
+li{
+	list-style-type: none;
+	font-family: 'OpenSans-Regular';
+}
+
+.update {
+	display: inline-block;
+	padding-left: 10px;
+}
+.update span {
+	padding-left: 20px;
+}
+
+.strikethrough{
+	text-decoration: line-through;
+}
+
+ul{
+	padding: 10px;
+	margin: 0;
+}
+
+table h3 {
+	padding-left: 10px;
+	font-family: 'OpenSans-Semibold';
+
+}
+#new_todo_form h2{
+	font-family: 'OpenSans-Semibold';
+}
